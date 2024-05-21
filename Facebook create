@@ -1,0 +1,73 @@
+package myPackage;
+import java.time.Duration;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class facbooklogin {
+@Test
+public void customerBrowser() {
+    String browser = "Chrome";
+    WebDriver cd = null;
+
+    if (browser.equals("Firefox")) {
+        cd = new FirefoxDriver();
+    } else if (browser.equals("Chrome")) {
+        cd = new ChromeDriver();
+    } else if (browser.equals("Edge")) {
+        cd = new EdgeDriver();
+    }
+
+    cd.get("https://www.facebook.com");
+    System.out.println("Title of the page: " + cd.getTitle());
+
+   
+    WebDriverWait wait = new WebDriverWait(cd, Duration.ofSeconds(10));
+    WebElement createAccountBtn = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Create new account")));
+    createAccountBtn.click();
+
+    WebElement firstName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("firstname")));
+    firstName.sendKeys("XYZ");
+
+    WebElement lastName = cd.findElement(By.name("lastname"));
+    lastName.sendKeys("ABC");
+
+    WebElement email = cd.findElement(By.name("reg_email__"));
+    email.sendKeys("xyz@gmail.com");
+
+    WebElement emailConfirmation = cd.findElement(By.name("reg_email_confirmation__"));
+    emailConfirmation.sendKeys("xyz@gmail.com");
+
+    WebElement password = cd.findElement(By.name("reg_passwd__"));
+    password.sendKeys("YourSecurePassword 456788899999");
+
+ 
+    WebElement day = cd.findElement(By.id("day"));
+    day.sendKeys("16");
+
+    WebElement month = cd.findElement(By.id("month"));
+    month.sendKeys("May");
+
+    WebElement year = cd.findElement(By.id("year"));
+    year.sendKeys("2002");
+
+    WebElement gender = cd.findElement(By.xpath("//input[@value='2']")); // Selecting 'Custom' as an example
+    gender.click();
+
+    // Submit the form
+    WebElement signUp = cd.findElement(By.name("websubmit"));
+    signUp.click();
+
+    // Wait to observe the result and print the title of the resulting page
+    wait.until(ExpectedConditions.titleContains("Facebook"));
+    System.out.println("Title of the page after registration: " + cd.getTitle());
+
+    
+}

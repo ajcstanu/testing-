@@ -1,0 +1,41 @@
+package myPackage;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class InstaTest {
+    @Test
+    public void TestInstaDone() {
+    	 
+    	String browser = "Chrome";
+		WebDriver cd = null;
+		
+		if(browser.equals("Firefox")) {
+			cd= new FirefoxDriver();
+			
+		}
+		else if(browser.equals("Chrome")) {
+			cd= new ChromeDriver();
+			
+	}
+		else if(browser.equals("Edge")) {
+			cd= new EdgeDriver();
+					
+		}
+		
+		  ChromeDriver a = new ChromeDriver();
+	        
+	        a.get("https://instagram.com");
+	        WebElement username = a.findElement(By.name("username"));
+	        username.sendKeys("tanisha_1");
+	        WebElement password = a.findElement(By.name("password"));
+	        password.sendKeys("1122233444");
+	        WebElement login = a.findElement(By.xpath("//button[@type='submit']"));
+	        login.click();
+    }
+}

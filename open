@@ -1,0 +1,17 @@
+package myPackage;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Myproject {
+@Test
+public void Myprojectforbrowser() {
+	WebDriver driver=new FirefoxDriver();
+	WebDriver cd=new org.openqa.selenium.chrome.ChromeDriver();
+	WebDriver ed=new EdgeDriver();
+	driver.get("https://instagram.com");
+	cd.get("https://fb.com");
+	cd.get("https://www.rediff.com");
+}
+}

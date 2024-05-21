@@ -1,0 +1,40 @@
+package myPackage;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class facbook {
+	@Test
+public void test() {
+		String browser = "Chrome";
+		WebDriver cd = null;
+		
+		if(browser.equals("Firefox")) {
+			cd= new FirefoxDriver();
+			
+		}
+		else if(browser.equals("Chrome")) {
+			cd= new ChromeDriver();
+			
+	}
+		else if(browser.equals("Edge")) {
+			cd= new EdgeDriver();
+					
+		}
+		
+		cd.get("https://fb.com");
+		System.out.println("Title of the page :" +cd.getTitle());
+		
+		WebElement username = cd.findElement(By.id("email"));
+		username.sendKeys("tanisha@nbjfjfj");
+		WebElement password = cd.findElement(By.id("pass"));
+		password.sendKeys("1234adff");
+		WebElement login = cd.findElement(By.name("login"));
+		login.click();
+
+	}
+}
